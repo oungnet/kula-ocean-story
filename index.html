@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sea of Unity | มหาสมุทรแห่งมิตรภาพ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&family=Kanit:wght@300;400;600&display=swap');
+        
+        :root {
+            --ocean-dark: #0f172a;
+            --gold-soft: #fbbf24;
+            --gold-deep: #d97706;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--ocean-dark);
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Kanit', sans-serif; }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), var(--ocean-dark)),
+                        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=1600') center/cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(20px);
+            border-radius: 4rem;
+            padding: 5rem 2rem;
+            border: 1px solid var(--glass-border);
+            max-width: 900px;
+        }
+
+        .btn-soft {
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+            color: #0f172a;
+            padding: 1.2rem 3rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-soft:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3); }
+
+        .content-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2.5rem;
+            overflow: hidden;
+            transition: 0.4s;
+            height: 100%;
+        }
+
+        .content-card:hover { transform: translateY(-10px); border-color: var(--gold-soft); }
+
+        .char-tag {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--gold-soft);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            background: #1e293b;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .content-card:hover img { transform: scale(1.05); }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: var(--gold-soft);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="hero-overlay">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                    <span class="text-gradient">มหาสมุทรแห่งมิตรภาพ</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light text-blue-100 mb-10 max-w-3xl mx-auto">
+                    เมื่อ "กุลาน้อย" นักเดินทางผู้เปี่ยมด้วยศรัทธาแห่งบรรพชน <br>
+                    ต้องข้ามผ่านมิติเวลาเพื่อค้นหาความหมายของคำว่า "บ้าน" และ "การให้อภัย"
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#characters" class="btn-soft">อ่านเรื่องราวของกุลาน้อย</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Database -->
+    <section id="characters" class="py-24 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">หอจดหมายเหตุตัวละคร</h2>
+                <div class="section-divider"></div>
+                <p class="text-slate-400">รวบรวมอัตลักษณ์และจิตวิญญาณของเหล่านักเดินทาง</p>
+            </div>
+            
+            <div id="char-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Data will be loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- World & Story Logic -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-amber-400 mb-6">ภูมิศาสตร์แห่งปัญญา</h2>
+                    <div class="section-divider"></div>
+                    <div class="space-y-6 text-slate-300">
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <h4 class="text-xl font-bold text-white mb-2">เกาะแก้วพิสดาร (Digital Hub)</h4>
+                            <p>ศูนย์กลางการเรียนรู้ที่กุลาน้อยใช้ AI และเทคโนโลยีเพื่อเชื่อมโยงภูมิปัญญาชาวบ้านเข้ากับโลกอนาคต</p>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <h4 class="text-xl font-bold text-white mb-2">ทุ่งกุลาร้องไห้ (Memory Plains)</h4>
+                            <p>ดินแดนแห่งความทรงจำที่สะท้อนถึงความอดทนและการต่อสู้เพื่อความอยู่รอดของบรรพชน</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1506477331477-33d6d8b3dc85?auto=format&fit=crop&q=80&w=1000" alt="World Map">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Deployment Info -->
+    <footer class="py-20 bg-slate-950 text-center border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-3xl mb-6 text-amber-400"><i class="fa-solid fa-anchor"></i></div>
+            <h4 class="text-white font-bold mb-4">Kula Noi Project</h4>
+            <p class="text-slate-500 text-sm mb-8">
+                โครงการสื่อสารคุณธรรมผ่านนิทานดิจิทัล <br>
+                กตัญญู • เมตตา • สันติภาพ
+            </p>
+            <div class="pt-8 border-t border-white/5">
+                <p class="text-xs text-slate-600">
+                    GitHub Repository: <code>non-yai-smart-community</code><br>
+                    Path: <code>/kula/index.html</code>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const characters = [
+            {
+                name: "กุลาน้อย (Kula Noi)",
+                role: "นักเดินทางผู้ถักทอสายใยแห่งอดีตสู่อนาคต",
+                tags: ["กตัญญู", "สันติวิธี", "ผู้นำการเปลี่ยนแปลง"],
+                img: "kula-noi-frog.jpg", 
+                desc: "เด็กหนุ่มผู้ถือห่อผ้าแห่งภูมิปัญญา เดินทางข้ามมิติเพื่อสอนให้โลกรู้จักพลังของการให้อภัยและความจริงใจ"
+            },
+            {
+                name: "กุลาน้อย (AI Master)",
+                role: "ผู้พิทักษ์ระบบนิเวศน์ดิจิทัล",
+                tags: ["นวัตกรรม", "ปัญญาประดิษฐ์", "วิสัยทัศน์"],
+                img: "icon_master-2.jpg",
+                desc: "การผสมผสานระหว่างจิตวิญญาณดั้งเดิมกับเทคโนโลยีสมัยใหม่ เพื่อสร้างชุมชนที่ยั่งยืนและชาญฉลาด"
+            },
+            {
+                name: "มิตรแท้แห่งพงไพร",
+                role: "สัญลักษณ์แห่งความซื่อสัตย์",
+                tags: ["มิตรภาพ", "ความถ่อมตัว"],
+                img: "kula-noi-frog-2.jpg",
+                desc: "กบตัวน้อยผู้คอยเตือนสติว่า แม้จะก้าวไปไกลแค่ไหน สิ่งสำคัญคือการไม่ลืมรากเหง้าและเพื่อนร่วมทาง"
+            }
+        ];
+
+        function render() {
+            const grid = document.getElementById('char-grid');
+            grid.innerHTML = characters.map(c => `
+                <div class="content-card">
+                    <div class="image-container">
+                        <img src="${c.img}" alt="${c.name}" onerror="this.src='https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800'">
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4">${c.tags.map(t => `<span class="char-tag">${t}</span>`).join('')}</div>
+                        <h3 class="text-2xl font-bold text-amber-300 mb-2">${c.name}</h3>
+                        <p class="text-sm text-amber-500 font-semibold mb-4 uppercase tracking-wider">${c.role}</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">${c.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.onload = render;
+    </script>
+</body>
+</html>
