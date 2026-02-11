@@ -27,7 +27,7 @@
         h1, h2, h3, h4 { font-family: 'Kanit', sans-serif; }
 
         .hero-section {
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), var(--ocean-dark)),
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), var(--ocean-dark)),
                         url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=1600') center/cover;
             min-height: 85vh;
             display: flex;
@@ -68,15 +68,22 @@
             border: 1px solid var(--glass-border);
             border-radius: 1.5rem;
             overflow: hidden;
-            transition: 0.3s;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--gold-soft);
         }
 
         .image-wrapper {
             width: 100%;
-            height: 400px;
+            height: 320px;
             background: #1e293b;
             overflow: hidden;
+            position: relative;
         }
 
         .image-wrapper img {
@@ -86,21 +93,25 @@
             transition: 0.5s;
         }
 
-        .story-content {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 2rem;
-            padding: 3rem;
-            border: 1px solid var(--glass-border);
-        }
-
         .char-tag {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             padding: 0.2rem 0.6rem;
             border-radius: 999px;
             background: rgba(212, 160, 55, 0.1);
             color: var(--gold-soft);
             border: 1px solid rgba(212, 160, 55, 0.2);
             margin-right: 0.4rem;
+            text-transform: uppercase;
+        }
+
+        .story-container {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 2rem;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -111,102 +122,121 @@
         <div class="hero-overlay">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-amber-400">มหาสมุทรแห่งมิตรภาพ</h1>
             <p class="text-lg md:text-xl font-light text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-                เมื่อ "กุลาน้อย" นักเดินทางจากทุ่งกุลา <br>
-                ต้องเรียนรู้การให้อภัยท่ามกลางพายุแห่งเทคโนโลยีและมิตรภาพ
+                เมื่อ "กุลาน้อย" นักเดินทางผู้เปี่ยมด้วยศรัทธาแห่งบรรพชน <br>
+                ต้องข้ามผ่านมิติเวลาเพื่อค้นหาความหมายของคำว่า "บ้าน" และ "การให้อภัย"
             </p>
-            <a href="#story" class="btn-action">เริ่มต้นการเดินทาง</a>
+            <a href="#characters" class="btn-action">อ่านเรื่องราวของกุลาน้อย</a>
         </div>
     </section>
 
-    <!-- Story Content Section (New!) -->
-    <section id="story" class="py-20 px-6 max-w-4xl mx-auto">
-        <div class="story-content">
-            <h2 class="text-3xl font-bold text-amber-400 mb-8 flex items-center">
-                <i class="fa-solid fa-book-open mr-4"></i> เรื่องวุ่นๆ ที่มหาสมุทรแห่งมิตรภาพ
+    <!-- Content Area -->
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        
+        <!-- Story Summary -->
+        <div class="story-container mb-24">
+            <h2 class="text-2xl font-bold text-amber-400 mb-6 flex items-center">
+                <i class="fa-solid fa-star-and-crescent mr-3"></i> บทนำเรื่องราว
             </h2>
-            <div class="prose prose-invert lg:prose-xl text-slate-300 leading-relaxed space-y-6">
-                <p>
-                    กาลครั้งหนึ่ง... ในวันที่ท้องฟ้ากับทะเลดูจะเชื่อมกันจนแยกไม่ออก มีเรื่องแปลกๆ เกิดขึ้นที่มหาสมุทรแห่งหนึ่ง 
-                    <strong class="text-white">นางยักษ์ผีเสื้อสมุทร</strong> ในร่างจำแลงสุดสวย กำลังนั่งถอนหายใจทิ้งอยู่บนโขดหิน เธอนั่งดู 
-                    <strong class="text-white">สินสมุทร</strong> ลูกชายตัวแสบเล่นน้ำกับ <strong class="text-white">นางเงือก</strong> 
-                    สาวสวยที่ดูจะระแวงอยู่ตลอดเวลา
-                </p>
-                <div class="p-6 bg-amber-400/5 border-l-4 border-amber-400 my-8">
-                    <p class="italic">"ใจเย็นๆ กันก่อนนะทุกคน ความโกรธมันก็เหมือนไฟนั่นแหละ มันเผาใจเราก่อนจะไปเผาคนอื่นนะ"</p>
-                    <cite class="text-amber-400 block mt-2">— พระเยซู ผู้จาริกเปี่ยมเมตตา</cite>
-                </div>
-                <p>
-                    พอยังไม่ทันขาดคำ <strong class="text-white">พระฤาษี</strong> แห่งเกาะแก้วพิสดารก็ปรากฏตัวขึ้น ท่านร่ายมนต์แป๊บเดียวคลื่นก็สงบนิ่ง 
-                    แล้วก็ชวนทุกคนไปนั่งคุยกันที่อาศรม เพื่อสอนบทเรียนเรื่องความกลัวและการยอมรับตัวเอง
-                </p>
-            </div>
+            <p class="text-slate-300 leading-relaxed text-lg">
+                ณ ทะเลสีทันดร จุดบรรจบของมิติต่างๆ เรื่องราวของความเมตตาและการยอมรับตนเองได้เริ่มต้นขึ้น 
+                เมื่อเหล่ายอดฝีมือและผู้วิเศษจากทั่วทุกมุมโลกต้องมาเผชิญหน้ากับพายุแห่งทิฐิ... 
+                ร่วมเดินทางไปกับพวกเราเพื่อค้นหาความหมายที่แท้จริงของ "มิตรภาพ"
+            </p>
         </div>
-    </section>
 
-    <!-- Character Archive Section -->
-    <section id="characters" class="py-24 px-6 bg-slate-900/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-12 text-center">
+        <!-- Character Archive -->
+        <div id="characters">
+            <div class="mb-12">
                 <h2 class="text-3xl font-bold text-white mb-2">หอจดหมายเหตุตัวละคร</h2>
+                <div class="w-16 h-1 bg-amber-500 mb-4"></div>
                 <p class="text-slate-400">อัตลักษณ์ที่ถักทอจากภูมิปัญญาและนวัตกรรมดิจิทัล</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Character 1 -->
-                <div class="content-card">
+                <!-- Character 1: Kula Noi (Classic) -->
+                <article class="content-card">
                     <div class="image-wrapper">
-                        <!-- ชี้ Path ไปยังโฟลเดอร์ assets/images -->
-                        <img src="./assets/images/kula-noi-frog.png" alt="กุลาน้อย" onerror="this.src='./kula-noi-frog.png'">
+                        <!-- ดึงภาพจากโฟลเดอร์ใหม่ที่สร้าง -->
+                        <img src="./assets/images/kula-noi-frog.png" 
+                             alt="กุลาน้อย" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/fbbf24?text=Kula+Noi';">
                     </div>
                     <div class="p-8">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <span class="char-tag">กตัญญู</span>
+                            <span class="char-tag">สันติวิธี</span>
+                            <span class="char-tag">ผู้นำการเปลี่ยนแปลง</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-amber-400 mb-1">กุลาน้อย (Classic)</h3>
-                        <p class="text-slate-400 text-sm">นักเดินทางผู้ถักทอสายใยจากทุ่งกุลาร้องไห้สู่โลกกว้าง</p>
+                        <h3 class="text-2xl font-bold text-amber-400 mb-2">กุลาน้อย (Kula Noi)</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            นักเดินทางผู้ถักทอสายใยแห่งอดีตสู่อนาคต ถือห่อผ้าแห่งภูมิปัญญาเพื่อสอนให้โลกรู้จักพลังของการให้อภัย
+                        </p>
+                        <hr class="border-slate-800 mb-4">
+                        <div class="flex justify-between items-center text-xs text-slate-500">
+                            <span>สถานะ: กำลังเดินทาง</span>
+                            <i class="fa-solid fa-chevron-right text-amber-600"></i>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Character 2 -->
-                <div class="content-card">
+                <!-- Character 2: AI Master -->
+                <article class="content-card">
                     <div class="image-wrapper">
-                        <img src="./assets/images/icon_master-2.png" alt="AI Master" onerror="this.src='./icon_master-2.png'">
+                        <img src="./assets/images/icon_master-2.png" 
+                             alt="AI Master" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/fbbf24?text=AI+Master';">
                     </div>
                     <div class="p-8">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <span class="char-tag">นวัตกรรม</span>
+                            <span class="char-tag">ปัญญาประดิษฐ์</span>
+                            <span class="char-tag">วิสัยทัศน์</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-amber-400 mb-1">กุลาน้อย (AI Master)</h3>
-                        <p class="text-slate-400 text-sm">ผู้พิทักษ์นวัตกรรมชุมชนและการจัดการความรู้ดิจิทัล</p>
+                        <h3 class="text-2xl font-bold text-amber-400 mb-2">กุลาน้อย (AI Master)</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            ผู้พิทักษ์ระบบนิเวศน์ดิจิทัล ผสมผสานจิตวิญญาณดั้งเดิมกับเทคโนโลยีเพื่อสร้างชุมชนที่ยั่งยืน
+                        </p>
+                        <hr class="border-slate-800 mb-4">
+                        <div class="flex justify-between items-center text-xs text-slate-500">
+                            <span>สถานะ: ประมวลผล</span>
+                            <i class="fa-solid fa-chevron-right text-amber-600"></i>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Character 3 -->
-                <div class="content-card">
+                <!-- Character 3: Frog Friend -->
+                <article class="content-card">
                     <div class="image-wrapper">
-                        <img src="./assets/images/kula-noi-frog-2.png" alt="มิตรแท้" onerror="this.src='./kula-noi-frog-2.png'">
+                        <img src="./assets/images/kula-noi-frog-2.png" 
+                             alt="มิตรแท้" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/fbbf24?text=Frog+Friend';">
                     </div>
                     <div class="p-8">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <span class="char-tag">มิตรภาพ</span>
+                            <span class="char-tag">ความถ่อมตัว</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-amber-400 mb-1">มิตรแท้แห่งพงไพร</h3>
-                        <p class="text-slate-400 text-sm">สัญลักษณ์แห่งความซื่อสัตย์และการร่วมมือกันในชุมชน</p>
+                        <h3 class="text-2xl font-bold text-amber-400 mb-2">มิตรแท้แห่งพงไพร</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            สัญลักษณ์แห่งความซื่อสัตย์ คอยเตือนสติว่าไม่ว่าจะไปไกลแค่ไหน สิ่งสำคัญคือการไม่ลืมรากเหง้า
+                        </p>
+                        <hr class="border-slate-800 mb-4">
+                        <div class="flex justify-between items-center text-xs text-slate-500">
+                            <span>สถานะ: พิทักษ์ป่า</span>
+                            <i class="fa-solid fa-chevron-right text-amber-600"></i>
+                        </div>
                     </div>
-                </div>
+                </article>
 
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="py-12 text-center border-t border-slate-800">
-        <div class="flex justify-center gap-6 mb-4 text-slate-500">
-            <a href="#" class="hover:text-amber-400 transition-colors">หน้าหลักชุมชน</a>
-            <a href="#" class="hover:text-amber-400 transition-colors">ติดต่อเรา</a>
-        </div>
-        <p class="text-slate-600 text-xs">© 2026 Non-Yai Smart Community Project | Optimized for GitHub Pages</p>
+    <footer class="py-12 bg-slate-950 text-center border-t border-slate-900">
+        <p class="text-slate-500 text-sm mb-2">© 2026 Non-Yai Smart Community Project</p>
+        <p class="text-slate-700 text-xs">Repository: kula-ocean-story | Path: assets/images/</p>
     </footer>
 
 </body>
